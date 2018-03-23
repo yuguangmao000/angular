@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <!--导入样式文件-->
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="css/style.css">
+
+
+</head>
+<body ng-app="Douban">
+
+<!--导航部分-->
+<nav class="navbar navbar-inverse" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">豆瓣电影</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">电影列表</a></li>
+                <li><a href="#">首页</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!--内容部分-->
+<div class="container-fluid">
+
+    <div class="row">
+
+        <!--左边部分-->
+        <div class="col-md-2">
+                <ul class="nav nav-pills nav-stacked" role="tablist" ng-init="">
+                    <!--<li select-link class="active"><a href="#/in_theaters/0">正在热映</a></li>-->
+                    <!--<li select-link><a href="#/coming_soon/0">即将上映</a></li>-->
+                    <!--<li select-link><a href="#/top250/0">top250</a></li>-->
+
+                    <li ng-class="{active:selectedIndex==0}" ng-click="selectedIndex=0"><a href="#/in_theaters/0">正在热映</a></li>
+                    <li ng-class="{active:selectedIndex==1}" ng-click="selectedIndex=1"><a href="#/coming_soon/0">即将上映</a></li>
+                    <li ng-class="{active:selectedIndex==2}" ng-click="selectedIndex=2"><a href="#/top250/0">top250</a></li>
+                </ul>
+
+            <br>
+            <br>
+            <div class="input-group">
+                <input type="text" class="form-control">
+                <span class="input-group-btn">
+                  <button class="btn btn-info" type="button">搜索</button>
+                </span>
+            </div>
+
+        </div>
+        <!--右边部分-->
+        <div class="col-md-10" ng-view>
+            <!--内容应该是由路由控制的，就需要指定理由模板显示的位置-->
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!--导入js文件-->
+<!--第三方-->
+<script src="lib/angular/angular.js"></script>
+<script src="lib/angular-route/angular-route.js"></script>
+<script src="lib/jquery/jquery-1.11.2.js"></script>
+<script src="lib/bootstrap/dist/js/bootstrap.js"></script>
+
+<!--自己写-->
+<script src="js/app.js"></script>
+<script src="movie/movie_list.js"></script>
+<script src="js/directive.js"></script>
+<script src="movie/movie_detail.js"></script>
+</body>
+</html>

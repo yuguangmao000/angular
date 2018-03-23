@@ -1,0 +1,62 @@
+
+<div>
+    <h2 class="page-header">{{ctrl.title}}</h2>
+    <div class="list-group">
+        <a class="list-group-item" ng-repeat="movie in ctrl.movies" href="#/subject/{{movie.id}}">
+            <div class="media" >
+                <div class="media-left">
+                    <!--图片-->
+                    <img ng-src="{{movie.images.small}}" alt="">
+                </div>
+                <div class="media-body">
+                    <!--标题-->
+                    <p>
+                    <h3 class="media-heading">{{movie.title}}</h3>
+                    </p>
+                    <!--导演-->
+                    <p>
+                        <span ng-repeat="dir in movie.directors">
+                            {{dir.name}}{{$last? "" : "、"}}
+                        </span>
+                    </p>
+                    <!--类型-->
+                    <p>
+                        <!--<span ng-repeat="gen in movie.genres">-->
+                            <!--{{gen}}{{$last? "" : "、"}}-->
+                        <!--</span>-->
+                        <span>
+                            {{movie.genres.join("、")}}
+                        </span>
+                    </p>
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <div>
+        <ul class="pager">
+            <li><a ng-click="ctrl.next(false)">上一页</a></li>
+            <li><a ng-click="ctrl.next(true)">下一页</a></li>
+        </ul>
+        <span>总共：{{ctrl.total || 0}} 条</span>
+    </div>
+
+</div>
+
+<!--加载提示框： 默认是隐藏的，默认是透明的 -->
+<div class="modal fade in" style="display: block" ng-class="{in:true}" ng-if="ctrl.loading">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">正在加载......</h4>
+            </div>
+            <div class="modal-body">
+                <div class="progress">
+                    <div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                        <span class="sr-only">40% Complete (success)</span>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
